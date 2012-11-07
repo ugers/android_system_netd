@@ -43,10 +43,11 @@ LOCAL_SHARED_LIBRARIES := libstlport libsysutils libcutils libnetutils \
 
 ifdef USES_TI_MAC80211
   LOCAL_SRC_FILES += SoftapControllerTI.cpp
+else ifeq ($(BOARD_WIFI_VENDOR), realtek)
+  LOCAL_SRC_FILES += SoftapController_realtek.cpp
 else
   LOCAL_SRC_FILES += SoftapController.cpp
 endif
-
 
 ifneq ($(BOARD_HOSTAPD_DRIVER),)
   LOCAL_CFLAGS += -DHAVE_HOSTAPD
